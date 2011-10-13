@@ -42,7 +42,7 @@ class Playlist(object):
     # redefine type,id builtins - refactor later
     # pylint: disable=W0622
     def __init__(self, name=None, type=None, id=None, reference_id=None,
-        data=None, connection=None):
+        data=None, _connection=None):
         self.id = None
         self.reference_id = None
         self.account_id = None
@@ -55,7 +55,7 @@ class Playlist(object):
 
         self.raw_data = None
 
-        self.connection = connection
+        self.connection = _connection
         if not self.connection:
             self.connection = pybrightcove.connection.APIConnection()
 
@@ -143,7 +143,7 @@ class Playlist(object):
 
         for video in data.get('videos', []):
             self.videos.append(pybrightcove.video.Video(
-                data=video, connection=self.connection))
+                data=video, _connection=self.connection))
 
     def save(self):
         """
