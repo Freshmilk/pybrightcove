@@ -422,6 +422,7 @@ class Video(object):
         self.length = data['length']
         self.link_text = data['linkText']
         self.link_url = data['linkURL']
+        self.flv_url = data['FLVURL']
         self.long_description = data['longDescription']
         self.name = data['name']
         self.plays_total = data['playsTotal']
@@ -430,6 +431,8 @@ class Video(object):
         self.start_date = _convert_tstamp(data.get('startDate', None))
         self.end_date = _convert_tstamp(data.get('endDate', None))
         self.reference_id = data['referenceId']
+        for r in data['renditions']:
+            self.renditions.append(Rendition(r))
         self.short_description = data['shortDescription']
         self.tags = []
         for tag in data['tags']:
