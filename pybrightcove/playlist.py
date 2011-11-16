@@ -29,6 +29,8 @@ from pybrightcove.enums import DEFAULT_SORT_BY, DEFAULT_SORT_ORDER
 VALID_PLAYLIST_TYPES = (pybrightcove.enums.PlaylistTypeEnum.EXPLICIT,
                         pybrightcove.enums.PlaylistTypeEnum.OLDEST_TO_NEWEST,
                         pybrightcove.enums.PlaylistTypeEnum.NEWEST_TO_OLDEST,
+                        pybrightcove.enums.PlaylistTypeEnum.START_DATE_OLDEST_TO_NEWEST,
+                        pybrightcove.enums.PlaylistTypeEnum.START_DATE_NEWEST_TO_OLDEST,
                         pybrightcove.enums.PlaylistTypeEnum.ALPHABETICAL,
                         pybrightcove.enums.PlaylistTypeEnum.PLAYS_TOTAL,
                         pybrightcove.enums.PlaylistTypeEnum.PLAYS_TRAILING_WEEK)
