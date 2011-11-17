@@ -437,6 +437,9 @@ class Video(object):
         self.tags = []
         for tag in data['tags']:
             self.tags.append(tag)
+        if hasattr(data, 'customFields'):
+            for key, val in data['customFields'].items():
+                self.add_custom_metadata(key, val)
         self.thumbnail_url = data['thumbnailURL']
         self.video_still_url = data['videoStillURL']
 
