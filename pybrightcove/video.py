@@ -651,7 +651,7 @@ class Video(object):
     @staticmethod
     def find_modified(since, filter_list=None, _connection=None, page_size=25,
         page_number=0, sort_by=enums.DEFAULT_SORT_BY,
-        sort_order=enums.DEFAULT_SORT_ORDER):
+        sort_order=enums.DEFAULT_SORT_ORDER, **kwargs):
         """
         List all videos modified since a certain date.
         """
@@ -664,7 +664,7 @@ class Video(object):
         fdate = int(since.strftime("%s")) / 60  ## Minutes since UNIX time
         return connection.ItemResultSet('find_modified_videos',
             Video, _connection, page_size, page_number, sort_by, sort_order,
-            from_date=fdate, filter=filters)
+            from_date=fdate, filter=filters, **kwargs)
 
     @staticmethod
     def find_all(_connection=None, page_size=100, page_number=0,
