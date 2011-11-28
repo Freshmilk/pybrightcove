@@ -442,6 +442,9 @@ class Video(object):
                 self.add_custom_metadata(key, val)
         self.thumbnail_url = data['thumbnailURL']
         self.video_still_url = data['videoStillURL']
+        if data.has_key('itemState') and \
+        getattr(enums.ItemStateEnum, data['itemState'], None) is not None:
+            self.item_state = getattr(enums.ItemStateEnum, data['itemState'])
 
     def __setattr__(self, name, value):
         msg = None
@@ -459,6 +462,7 @@ class Video(object):
                 msg = "Video.short_description must be 250 characters or less."
             if name == 'item_state' and value not in (
                     enums.ItemStateEnum.ACTIVE,
+                    enums.ItemStateEnum.DELETED,
                     enums.ItemStateEnum.INACTIVE):
                 msg = "Video.item_state must be either ItemStateEnum.ACTIVE or"
                 msg += " ItemStateEnum.INACTIVE"
