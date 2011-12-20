@@ -147,6 +147,10 @@ class Playlist(object):
             self.videos.append(pybrightcove.video.Video(
                 data=video, _connection=self.connection))
 
+        self.filter_tags = []
+        for tag in data['filterTags']:
+            self.filter_tags.append(tag)
+
     def save(self):
         """
         Create or update a playlist.
